@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+No change to the library. The first version published from CI, by tag.
+
 ## 0.1.0
 
 First version.

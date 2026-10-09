@@ -1,6 +1,6 @@
 {
   "name": "kascade",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A universal JavaScript/TypeScript library for reading files out of Blizzard CASC storage (StarCraft: Remastered installs), in Node.js and the browser",
   "keywords": [
     "casc",

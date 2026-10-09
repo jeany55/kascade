@@ -1,0 +1,89 @@
+{
+  "name": "kascade",
+  "version": "0.1.0",
+  "description": "A universal JavaScript/TypeScript library for reading files out of Blizzard CASC storage (StarCraft: Remastered installs), in Node.js and the browser",
+  "keywords": [
+    "casc",
+    "blte",
+    "blizzard",
+    "starcraft",
+    "remastered",
+    "storage",
+    "extract",
+    "unpack",
+    "browser",
+    "isomorphic",
+    "universal"
+  ],
+  "homepage": "https://github.com/jeany55/kascade#readme",
+  "bugs": {
+    "url": "https://github.com/jeany55/kascade/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeany55/kascade.git"
+  },
+  "license": "MIT",
+  "author": "Jeany (https://github.com/jeany55)",
+  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./node": {
+      "import": {
+        "types": "./dist/node.d.mts",
+        "default": "./dist/node.mjs"
+      },
+      "require": {
+        "types": "./dist/node.d.cts",
+        "default": "./dist/node.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "node"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run clean && tsdown",
+    "dev": "tsdown --watch",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "check:publish": "publint --strict",
+    "check:exports": "attw --pack .",
+    "verify": "npm run typecheck && npm test && npm run build && npm run check:publish && npm run check:exports",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@types/node": "^26.4.0",
+    "publint": "^0.3.24",
+    "tsdown": "^0.22.14",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
